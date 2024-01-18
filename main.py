@@ -19,18 +19,23 @@ class Balle:
 
         if self.x < self.rayon:
             self.x = self.rayon
+            self.change_x *= -1
 
         if self.x > SCREEN_WIDTH - self.rayon:
             self.x = SCREEN_WIDTH - self.rayon
+            self.change_x *= -1
 
         if self.y < self.rayon:
             self.y = self.rayon
+            self.change_y *= -1
 
         if self.y > SCREEN_HEIGHT - self.rayon:
             self.y = SCREEN_HEIGHT - self.rayon
+            self.change_y *= -1
 
     def draw(self):
         arcade.draw_circle_filled(self.x, self.y, self.rayon, self.color)
+
 
 class Rectangle:
     def __init__(self, x, y, change_x, change_y, width, height, color, angle):
@@ -49,18 +54,23 @@ class Rectangle:
 
         if self.x < self.width / 2:
             self.x = self.width / 2
+            self.change_x *= -1
 
         if self.x > SCREEN_WIDTH - self.width / 2:
             self.x = SCREEN_WIDTH - self.width / 2
+            self.change_x *= -1
 
         if self.y < self.height / 2:
             self.y = self.height / 2
+            self.change_y *= -1
 
         if self.y > SCREEN_HEIGHT - self.height / 2:
             self.y = SCREEN_HEIGHT - self.height / 2
+            self.change_y *= -1
 
     def draw(self):
         arcade.draw_rectangle_filled(self.x, self.y, self.width, self.height, self.color, self.angle)
+
 
 class MyGame(arcade.Window):
     def __init__(self):
