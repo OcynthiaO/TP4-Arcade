@@ -91,11 +91,11 @@ class MyGame(arcade.Window):
 
     def on_mouse_press(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT:
-            balle = Balle(x, y, 2, 2, random.randint(10, 30), arcade.color.RED)
+            balle = Balle(x, y, 3, 3, random.randint(10, 30), arcade.color.AIR_FORCE_BLUE)
             self.balles.append(balle)
 
         elif button == arcade.MOUSE_BUTTON_RIGHT:
-            rectangle = Rectangle(x, y, 2, 2, random.randint(20, 50), random.randint(20, 50), arcade.color.BLUE, 0)
+            rectangle = Rectangle(x, y, 3, 3, random.randint(20, 50), random.randint(20, 50), arcade.color.DARK_POWDER_BLUE, 0)
             self.rectangles.append(rectangle)
 
     def on_update(self, delta_time):
