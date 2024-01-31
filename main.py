@@ -4,6 +4,7 @@ import random
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+#classe Balle
 class Balle:
     def __init__(self, x, y, change_x, change_y, rayon, color):
         self.x = x
@@ -13,6 +14,7 @@ class Balle:
         self.rayon = rayon
         self.color = color
 
+#Placer la balle sur l’écran
     def update(self):
         self.x += self.change_x
         self.y += self.change_y
@@ -33,10 +35,11 @@ class Balle:
             self.y = SCREEN_HEIGHT - self.rayon
             self.change_y *= -1
 
+#dessiner la balle à l’écran
     def draw(self):
         arcade.draw_circle_filled(self.x, self.y, self.rayon, self.color)
 
-
+#classe Rectangle
 class Rectangle:
     def __init__(self, x, y, change_x, change_y, width, height, color, angle):
         self.x = x
@@ -48,6 +51,7 @@ class Rectangle:
         self.color = color
         self.angle = angle
 
+# Placer le rectangle sur l’écran
     def update(self):
         self.x += self.change_x
         self.y += self.change_y
@@ -68,10 +72,11 @@ class Rectangle:
             self.y = SCREEN_HEIGHT - self.height / 2
             self.change_y *= -1
 
+# dessiner le rectangle à l’écran
     def draw(self):
         arcade.draw_rectangle_filled(self.x, self.y, self.width, self.height, self.color, self.angle)
 
-
+#classe MyGame
 class MyGame(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Exercice #1")
@@ -89,6 +94,7 @@ class MyGame(arcade.Window):
         for rectangle in self.rectangles:
             rectangle.draw()
 
+#clique de la souris
     def on_mouse_press(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT:
             balle = Balle(x, y, 3, 3, random.randint(10, 30), arcade.color.AIR_FORCE_BLUE)
