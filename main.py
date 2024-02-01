@@ -4,6 +4,9 @@ import random
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+COLORS = [arcade.color.AMARANTH_PINK,arcade.color.AFRICAN_VIOLET, arcade.color.BABY_BLUE_EYES, arcade.color.BLUE_VIOLET, arcade.color.CHERRY]
+
+
 #classe Balle
 class Balle:
     def __init__(self, x, y, change_x, change_y, rayon, color):
@@ -12,7 +15,7 @@ class Balle:
         self.change_x = change_x
         self.change_y = change_y
         self.rayon = rayon
-        self.color = color
+        self.color = random.choice(COLORS)
 
 #Placer la balle sur l’écran
     def update(self):
@@ -48,8 +51,8 @@ class Rectangle:
         self.change_y = change_y
         self.width = width
         self.height = height
-        self.color = color
         self.angle = angle
+        self.color = random.choice(COLORS)
 
 # Placer le rectangle sur l’écran
     def update(self):
@@ -97,11 +100,11 @@ class MyGame(arcade.Window):
 #clique de la souris
     def on_mouse_press(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT:
-            balle = Balle(x, y, 3, 3, random.randint(10, 30), arcade.color.AIR_FORCE_BLUE)
+            balle = Balle(x, y, 3, 3, random.randint(10, 30), random.choice(COLORS))
             self.balles.append(balle)
 
         elif button == arcade.MOUSE_BUTTON_RIGHT:
-            rectangle = Rectangle(x, y, 3, 3, random.randint(20, 50), random.randint(20, 50), arcade.color.DARK_POWDER_BLUE, 0)
+            rectangle = Rectangle(x, y, 3, 3, random.randint(20, 50), random.randint(20, 50),random.choice(COLORS), 0)
             self.rectangles.append(rectangle)
 
     def on_update(self, delta_time):
